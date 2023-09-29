@@ -1,0 +1,476 @@
+/* Definir uma cor padrão para o texto, exceto para a classe .sender */
+*:not(.sender, i) {
+  color: #fcfcfc;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(67, 71, 80, 1);
+}
+
+.chat-container {
+  max-width: 1080px;
+  margin: 100px auto;
+  border-radius: 5px;
+}
+
+.chat-header {
+  color: rgb(232, 74, 74);
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+}
+
+#user-name-display {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.user-name-input {
+  display: block;
+  margin-left: 5px;
+  flex: 1;
+  padding: 5px;
+  border: 1px solid rgba(220, 220, 220, 1);
+  outline: none;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.user-name-input.hidden {
+  display: none;
+}
+
+.chat-messages {
+  border-radius: 5px;
+  color: #000;
+  padding: 10px;
+  min-height: 240px;
+  font-size: 15px;
+  overflow-y: scroll;
+  box-shadow: inset 8px 8px 46px 8px rgba(14, 14, 14, 0.2);
+  overflow-wrap: break-word;
+  align-content: center;
+  text-align: justify;
+  overflow-wrap: break-word;  
+  word-wrap: break-word; 
+  word-break: break-word;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 -4px 8px rgba(80, 80, 80, 0.1);
+}
+
+.chat-input input[type="text"] {
+  width: 230px;
+  height: 30px;
+  padding: 10px 25px;
+  background-color: transparent;
+  margin-left: 5px;
+  flex: 1;
+  padding: 5px;
+  border: 1px solid rgba(220, 220, 220, 1);
+  border-radius: 5px;
+  outline: none;
+}
+
+.chat-input button {
+  padding: 5px 10px;
+  margin-left: 10px;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid rgba(220, 220, 220, 1);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background-color: rgb(22, 18, 32);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #007BFF;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.avatar i {
+  color: #fff;
+}
+
+.message-container.own {
+  justify-content: flex-end;
+}
+
+.message-container.other {
+  justify-content: flex-start;
+}
+
+.sender {
+  color: rgb(232, 74, 74);
+}
+
+.message {
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 8px;
+  max-width: 70%;
+}
+
+/* Estilos para as mensagens de outros usuários */
+.message.other {
+  background-color: #f0f0f0;
+  color: rgb(45, 37, 63);
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-left: 10px;
+}
+
+/* Estilos para as mensagens do usuário local */
+.message.own {
+  background: rgb(45, 37, 63);
+  color: #fff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-right: 10px;
+}
+
+/* Definir animação de fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Estilizando as mensagens */
+.message-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Definir animação de escala */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.avatar {
+  animation: scaleIn 0.3s ease;
+}
+
+.message {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilizando o botão de arquivo */
+.file-input-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.file-input-button {
+  padding: 10px 11px;
+  border: 2px solid rgb(232, 74, 74);
+  border-radius: 100%;
+  background-color: transparent;
+  color: rgb(232, 74, 74);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+/* Scrollbar personalizada */
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: rgba(22, 18, 32, 0.2);
+}
+
+/* Media queries para tornar o chat responsivo */
+@media (max-width: 1440px) {
+  .chat-container {
+    margin: 20px auto;
+    margin-bottom: 20px;
+    max-width: 720px;
+  }
+
+  .chat-messages {
+    max-height: 200px;
+    min-height: 300px;
+  }
+
+  .message {
+    max-width: 85%;
+  }
+
+  .chat-input input {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .chat-container {
+    margin: 20px auto;
+    margin-bottom: 20px;
+    max-width: 440px;
+  }
+
+  .chat-messages {
+    max-height: 200px;
+    min-height: 180px;
+  }
+
+  .message {
+    max-width: 90%;
+  }
+}
+
+/* CSS para dispositivos móveis */
+@media (max-width: 600px) {
+  .chat-container {
+    margin: 20px auto;
+    max-width: 100%;
+  }
+
+  .chat-messages {
+    max-height: 200px;
+    min-height: 120px;
+  }
+
+  .message {
+    max-width: 100%;
+  }
+
+  .chat-input {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chat-input input[type="text"] {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .chat-container {
+    margin: 20px 20px;
+    max-width: calc(100% - 40px);
+  }
+
+  .chat-messages {
+    max-height: 200px;
+    min-height: 60px;
+  }
+
+  .message {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 414px) {
+  .chat-container {
+    margin: 20px auto;
+    max-width: 800px;
+  }
+
+  .chat-messages {
+    max-height: 200px;
+    min-height: 40px;
+  }
+
+  .message {
+    max-width: 90%;
+  }
+}
+
+.button {
+  --color: #f6f8ff;
+  --background: #58607f;
+  --background-hover: #535a79;
+  display: flex;
+  align-items: center;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  border: 0;
+  padding: 8px 36px;
+  line-height: 26px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  background: none;
+  color: var(--color);
+  -webkit-tap-highlight-color: transparent;
+}
+.button svg {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  transform: translateZ(0);
+  stroke: var(--stroke, none);
+  stroke-width: var(--stroke-width, 0);
+  fill: var(--fill, var(--background));
+  transition: fill 0.25s linear;
+}
+.button .span-normal {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+.button:hover {
+  --fill: var(--background-hover);
+}
+.button.border {
+  --stroke: #d1d6ee;
+  --stroke-width: 1px;
+  --color: #404660;
+  --background: #fff;
+  --background-hover: #fafbff;
+}
+
+button {
+  margin: 20px;
+  outline: none;
+}
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #000;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+/* 13 */
+.btn-13 {
+  background: #000;
+ color: #fff;
+ z-index: 1;
+}
+.btn-13:after {
+ position: absolute;
+ content: "";
+ width: 100%;
+ height: 0;
+ bottom: 0;
+ left: 0;
+ z-index: -1;
+  background: #e0e5ec;
+ transition: all 0.3s ease;
+}
+.btn-13:hover {
+ color: #000;
+}
+.btn-13:hover:after {
+ top: 0;
+ height: 100%;
+}
+.btn-13:active {
+ top: 2px;
+}
+
+/* Adicione estas regras ao seu arquivo styles.css */
+
+/* Estilo para as miniaturas das imagens */
+.thumbnail {
+  max-width: 100%; /* A miniatura não deve ser maior que o container do chat */
+  max-height: 200px; /* Altura máxima das miniaturas */
+  cursor: pointer; /* Mudar o cursor para indicar que a imagem é clicável */
+}
+
+/* Estilo para o modal */
+.modal {
+  display: none; /* O modal começa escondido */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Fundo preto transparente */
+}
+
+.modal-content {
+  max-width: 80%; /* Largura máxima da imagem no modal */
+  max-height: 80vh; /* Altura máxima da imagem no modal */
+  display: block;
+  margin: auto;
+  margin-top: 10vh; /* Margem superior para centralizar verticalmente */
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+/* Estilo para as mensagens no chat */
+.message-container {
+  display: flex;
+  align-items: center;
+}
+
+.message-container img {
+  margin: 4px; /* Espaçamento entre as miniaturas */
+}
+
+/* Estilo para as miniaturas de vídeo */
+.video-thumbnail {
+  display: inline-block;
+  margin: 4px;
+  max-width: 100%;
+  height: auto;
+}

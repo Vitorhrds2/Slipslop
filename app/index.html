@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat App</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Roboto&amp;display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div id="image-modal" class="modal">
+    <span class="modal-close" id="modal-close">&times;</span>
+    <img class="modal-content" id="modal-image">
+  </div>
+  <div class="chat-container">
+    <header class="chat-header">
+      <span id="user-name-display">Slipslop</span>
+      <label for="name-input" class="user-name-label"></label>
+      <input type="text" id="name-input" placeholder="Digite seu nome..." class="user-name-input">
+    </header>
+    <main class="chat-messages" id="chat-messages">
+      
+      <!-- Mensagens do chat serão adicionadas aqui dinamicamente -->
+    </main>
+    <footer class="chat-input">
+      <form id="message-form" enctype="multipart/form-data">
+        <input type="text" id="message-input" placeholder="Digite sua mensagem..." autocomplete="off">
+        <button type="submit" id="send-button" class="custom-btn btn-13">
+          <i class="fas fa-paper-plane" alt="Enviar"></i> Enviar
+        </button>
+        <div class="file-input-container">
+          <label class="file-input-button">
+            <i class="fa-solid fa-plus" alt="Anexar arquivo"></i>
+            <input type="file" class="file-input" id="file-input" />
+          </label>
+        </div>
+      </form>
+    </footer>
+    <!-- <button class="custom-btn btn-13">Read More</button> -->
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
